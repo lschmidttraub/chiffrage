@@ -74,10 +74,8 @@ n=p*q
 lam=ppcm(p-1,q-1)
 exp_public=2**16+1
 exp_prive=coefficient_bezout(exp_public, lam)
-print(exp_prive)
 if exp_prive<0:
     exp_prive+=lam
-print(exp_prive)
 
 message="Inshallah ça marche !/.,_'é#@"
 m=chiffrer(message, exp_public, n)
