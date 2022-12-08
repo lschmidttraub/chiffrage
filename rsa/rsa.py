@@ -5,24 +5,27 @@ Created on Mon Nov 28 11:51:32 2022
 @author: LSCHMIDT-TRAUB
 """
 import secrets
-from rsa.nombres_premiers import *
-from rsa.arithmetique_modulaire import *
-from rsa.chiffrage import *
+from nombres_premiers import *
+from arithmetique_modulaire import *
+from chiffrage import *
 
 
+def generer_clefs():
+    p = secrets.randbelow(10**3)
+    q = secrets.randbelow(10**3)
+    p=prochain_nb_premier(p)
+    q=prochain_nb_premier(q)
 
-p = secrets.randbelow(10**3)
-q = secrets.randbelow(10**3)
-p=prochain_nb_premier(p)
-q=prochain_nb_premier(q)
+    n=p*q
+    lam=ppcm(p-1,q-1)
+    clef_public=2**16+1
+    clef_prive=coefficient_bezout(clef_public, lam)
+    if clef_prive<0:
+        clef_prive+=lam
+    return n, clef_public, clef_prive
 
-n=p*q
-lam=ppcm(p-1,q-1)
-exp_public=2**16+1
-exp_prive=coefficient_bezout(exp_public, lam)
-if exp_prive<0:
-    exp_prive+=lam
+n, clef_public, clef_prive = generer_clefs()
 
 message="Inshallah ça marche !/.,_'é#@"
-m=chiffrer(message, exp_public, n)
-assert dechiffrer(m, exp_prive, n)==message
+m=chiffrer(message, clef_public, n)
+assert dechiffrer(m, clef_prive, n) == message
