@@ -15,15 +15,15 @@ def generer_clefs(maximum, clef_publique=2**16+1):
     q=prochain_nb_premier(q)
     n=p*q
     lam=ppcm(p-1,q-1)
-    clef_prive=coefficient_bezout(clef_publique, lam)
-    if clef_prive<0:
-        clef_prive+=lam
-    return n, clef_publique, clef_prive
+    clef_privee=coefficient_bezout(clef_publique, lam)
+    if clef_privee<0:
+        clef_privee+=lam
+    return n, clef_publique, clef_privee
 
 """
-n, clef_publique, clef_prive = generer_clefs(10**4)
+n, clef_publique, clef_privee = generer_clefs(10**4)
 
 message="Inshallah ça marche !/.,_'é#@"
 m=chiffrer(message, clef_publique, n)
-assert dechiffrer(m, clef_prive, n) == message
+assert dechiffrer(m, clef_privee, n) == message
 """
