@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Nov 28 11:51:32 2022
-
-@author: LSCHMIDT-TRAUB
-"""
 import secrets
 from nombres_premiers import *
 from arithmetique_modulaire import *
