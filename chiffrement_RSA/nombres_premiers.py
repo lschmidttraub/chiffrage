@@ -1,4 +1,8 @@
 def premier(n):
+    '''
+    Entrée: un entier positif n
+    Sortie: une valeur booléenne qui indique la primauté de n
+    '''
     if n <= 3:
         return n > 1
     if n % 2 == 0 or n % 3 == 0:
@@ -10,6 +14,10 @@ def premier(n):
     return True
 
 def prochain_nb_premier(n):
+    '''
+    Entrée: un nombre entier positif n
+    Sortie: le premier nombre premier p supérieur à n
+    '''
     if (not n%2) and (n != 2):
         n += 1
     if premier(n):
