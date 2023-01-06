@@ -1,4 +1,4 @@
-from chiffrement_RSA import rsa
+from chiffrement_RSA import rsa, chiffrage
 from chiffre_de_Cesar import Cesar
 from chiffre_de_Vigenere import Vigenere
 
@@ -12,6 +12,16 @@ elif choix == "2":
   
 elif choix == "3":
   n, clef_publique, clef_prive = generer_clefs(10**4)
-  fonction = input("Choisissez une fonctionalité (Entrez q pour retourner au menu): \n 1) Chiffrer un message \n 2) Déchiffrer un message \n")
+  fonction = input("Choisissez une fonctionalité (Entrez q pour retourner au menu): \n 1) Chiffrer ou déchiffrer un message \n 2) Chiffrer ou déchiffrer le contenu du fichier message.txt \n")
+  if option == "q":
+  elif option == "1":
+    message = input("Entrez votre message: ")
+  elif option == "2":
+    message = 
   
+  option2 = input("Voulez vous chiffrer(1) ou déchiffrer (2) ce message")
+  if option2 == "1":
+    res = rsa.chiffrer(message, clef_publique, n)
+  elif option2 == "2":
+    res = rsa.chiffrer(message, clef_privee, n)
   
