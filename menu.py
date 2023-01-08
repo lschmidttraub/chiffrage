@@ -4,7 +4,7 @@ from chiffre_de_Vigenere import Vigenere
 
 #Fonction ecrtiture/lecture de fichier
 def ajouter_fichier(a):
-    with open('message.txt','a') as f:
+    with open('message.txt','w') as f:
         f.write(a)
 
 def lire_fichier():
@@ -61,7 +61,7 @@ while loop1:
     print("Voici le résultat:\n", resultat)
     stocker = input("Voulez-vous stocker ce résultat dans le fichier message.txt? (o/n) ")
     if(stocker == "o"):
-      ajouter_fichier(resultat+"\n")
+      ajouter_fichier(resultat)
     print("Merci d'avoir joué\n\n")
   else:
     print("Veuillez entrer un texte valide.")
