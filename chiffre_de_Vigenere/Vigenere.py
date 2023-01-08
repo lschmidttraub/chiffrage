@@ -6,7 +6,7 @@ def chiffrer(mot, c):
     '''
     res=""
     indice=0
-    c=c.__upper__
+    c=c.upper()                                                         #on met la clef en majuscules
     for i in range(len(mot)):
         if mot[i] in chiffres:
             decalage = ord(c[indice%len(c)])-ord("A")
@@ -34,7 +34,7 @@ def dechiffrer(code, c):
     '''
     res=""
     indice=0
-    c=c.__upper__
+    c=c.upper()
     for i in range(len(code)):
         if code[i] in chiffres:
             decalage = ord(c[indice%len(c)])-ord("A")

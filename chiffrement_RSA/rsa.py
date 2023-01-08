@@ -1,7 +1,7 @@
 import secrets
-from nombres_premiers import *
-from arithmetique_modulaire import *
-from exponentiation import *
+from chiffrement_RSA.nombres_premiers import *
+from chiffrement_RSA.arithmetique_modulaire import *
+from chiffrement_RSA.exponentiation import *
 
 def chiffrer(message, clef, n):
     '''

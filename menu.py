@@ -1,4 +1,4 @@
-import chiffrement_RSA
+from chiffrement_RSA import rsa
 from chiffre_de_Cesar import Cesar
 from chiffre_de_Vigenere import Vigenere
 
@@ -14,10 +14,12 @@ def lire_fichier():
 
 loop1 = True
 while loop1:
-  option1 = input("Choisissez une fonctionalité (Entrez q pour quitter): \n 1) Chiffrer ou déchiffrer un message \n 2) Chiffrer ou déchiffrer le contenu du fichier message.txt \n")
+  option1 = input("Choisissez une fonctionalité (Entrez q pour quitter): \n 1) Chiffrer ou déchiffrer un message \n 2) Chiffrer ou déchiffrer le contenu du fichier message.txt \n 3) Lire le contenu du fichier message.txt\n")
   if option1 == "q":
     print("Au revoir!")
     loop1 = False
+  elif option1 == "3":
+    print(lire_fichier())
   elif option1 in ["1", "2"]:
     if option1 == "1":
       message = input("Entrez votre message: ")
@@ -29,7 +31,7 @@ while loop1:
     while methode not in ["1", "2", "3"]:
       methode = input("Veuillez choisir une méthode valide: \n")
     if methode == "1":
-      decalage = input("Entrez un décalage: ")
+      decalage = int(input("Entrez un décalage: "))
     elif methode == "2":
       clef = input("Entrez une clef: ")
     
@@ -38,13 +40,13 @@ while loop1:
     if option2 == "1":
       if methode == "1":
         resultat = Cesar.chiffrer(message, decalage)
-      if methode == "2":
+      elif methode == "2":
         resultat = Vigenere.chiffrer(message, clef)
       else:
         maximum = int(input("Choisissez une valeur maximale pour les nombres premiers p et q (un nombre plus grand est plus sécurisé mais prend plus longtemps à calculer): "))
-        n, clef_publique, clef_privee = chiffrement_RSA.rsa.generer_clefs(maximum)
+        n, clef_publique, clef_privee = rsa.generer_clefs(maximum)
         print("n = ", n, "\nclef publique = ", clef_publique, "\nclef privée = ", clef_privee)
-        resultat =  chiffrement_RSA.rsa.chiffrer(message, clef_publique, n)
+        resultat =  rsa.chiffrer(message, clef_publique, n)
     elif option2 == "2":
       if methode == "1":
         resultat = Cesar.dechiffrer(message, decalage)
@@ -59,8 +61,7 @@ while loop1:
     print("Voici le résultat:\n", resultat)
     stocker = input("Voulez-vous stocker ce résultat dans le fichier message.txt? (o/n) ")
     if(stocker == "o"):
-      ajouter_fichier("\n" + resultat)
+      ajouter_fichier(resultat+"\n")
+    print("Merci d'avoir joué\n\n")
   else:
     print("Veuillez entrer un texte valide.")
-else:
-  print("Veuillez entrer un texte valide.")
