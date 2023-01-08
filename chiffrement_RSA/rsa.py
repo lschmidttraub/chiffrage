@@ -39,11 +39,3 @@ def generer_clefs(maximum, clef_publique=2**16+1):
     if clef_privee<0:
         clef_privee+=lam
     return n, clef_publique, clef_privee
-
-
-# n, clef_publique, clef_privee = generer_clefs(10**4)
-
-# message="Inshallah ça marche !/.,_'é#@"
-# m=chiffrer(message, clef_publique, n)
-# assert dechiffrer(m, clef_privee, n) == message
-# print("Success!!")
