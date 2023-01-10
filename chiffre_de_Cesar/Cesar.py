@@ -32,7 +32,7 @@ def dechiffrer(mdp, d):                           #en parametre d le decalage / 
 
 
 
-def dechiffrement_sans_d(code):                 #en parametre code qui est le mot chiffré/ texte et decalage en sortie
+def dechiffrer_sans_d(code):                 #en parametre code qui est le mot chiffré/ texte et decalage en sortie
     '''
     Entréé: le code
     Sortie: mot de passe et le décalage
@@ -44,6 +44,7 @@ def dechiffrement_sans_d(code):                 #en parametre code qui est le mo
         correct=input("Ce message est-il correct(o/n)? ")
         if correct=="o":
             decalage=26-decalage                #permettra de renvoyer en sortie le decalage
-            return texte, decalage
+            return texte
 
-        decalage+=1                             #decalage augmente de 1 à chaque fois que l'utilisateur répond "n"
+        decalage+=1                         #decalage augmente de 1 à chaque fois que l'utilisateur répond "n"
+    return None, None                       #return les valeurs None si aucun décalage ne convient
